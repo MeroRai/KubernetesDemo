@@ -1,0 +1,9 @@
+healthcheck-configure-service --serviceName=healthcheck-cpu --enabled=true --time=15000 --unit=SECONDS --dynamic=true 
+healthcheck-log-notifier-configure --enabled=true --dynamic=true
+healthcheck-eventbus-notifier-configure --topicName=microConsole --dynamic=true --enabled=true
+set-monitoring-configuration --dynamic=true --enabled=true --amx=true
+notification-eventbus-configure --topicName=microConsole --dynamic=true --enabled=true
+set-requesttracing-configuration --historicalTraceEnabled=true --thresholdUnit=MILLISECONDS --notifierDynamic=true --thresholdValue=25000 --dynamic=true --enabled=true --historicalTraceStoreSize=20 --target=server-config
+requesttracing-log-notifier-configure --dynamic=true --enabled=true  
+requesttracing-eventbus-notifier-configure --topicName=microConsole --dynamic=true --enabled=true 
+bootstrap-requesttracing
