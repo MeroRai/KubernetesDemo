@@ -1,12 +1,26 @@
 healthcheck-log-notifier-configure --enabled=true --dynamic=true
 healthcheck-eventbus-notifier-configure --dynamic=true --enabled=true
-healthcheck-configure-service --serviceName=healthcheck-cpu --enabled=true --time=15000 --unit=SECONDS --dynamic=true
+healthcheck-configure-service --serviceName=healthcheck-cpu --enabled=true --time=200 --unit=SECONDS --dynamic=true
 healthcheck-configure --enabled true --dynamic true
 notification-eventbus-configure --topicName=microConsole --dynamic=true --enabled=true
-set server.monitoring-service.module-monitoring-levels.jvm=HIGH
-set server.monitoring-service.module-monitoring-levels.http-service=HIGH
-set server.monitoring-service.module-monitoring-levels.transaction-service=HIGH
-set server.monitoring-service.module-monitoring-levels.web-services-container=HIGH
+
+set configs.config.server-config.monitoring-service.module-monitoring-levels.jvm=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.connector-service=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.connector-connection-pool=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.jdbc-connection-pool=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.web-services-container=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.ejb-container=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.thread-pool=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.http-service=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.security=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.jms-service=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.jersey=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.transaction-service=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.jpa=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.web-container=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.orb=HIGH
+set configs.config.server-config.monitoring-service.module-monitoring-levels.deployment=HIGH
+
 set-monitoring-configuration --enabled true --dynamic true 
 set-monitoring-configuration --addproperty='name=CollectionCount value=java.lang:type=GarbageCollector description=CollectionCount'
 set-requesttracing-configuration --historicalTraceEnabled=true --thresholdUnit=SECONDS --notifierDynamic=true --thresholdValue=1 --dynamic=true --enabled=true --historicalTraceStoreSize=20 --target=server-config
