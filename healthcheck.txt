@@ -21,7 +21,7 @@ set configs.config.server-config.monitoring-service.module-monitoring-levels.web
 set configs.config.server-config.monitoring-service.module-monitoring-levels.orb=HIGH
 set configs.config.server-config.monitoring-service.module-monitoring-levels.deployment=HIGH
 
-set-monitoring-configuration --enabled true --dynamic true 
+set-monitoring-configuration --enabled true --dynamic true --amx=true
 set-monitoring-configuration --addproperty='name=CollectionCount value=java.lang:type=GarbageCollector description=CollectionCount'
 set-requesttracing-configuration --historicalTraceEnabled=true --thresholdUnit=SECONDS --notifierDynamic=true --thresholdValue=1 --dynamic=true --enabled=true --historicalTraceStoreSize=20 --target=server-config
 requesttracing-log-notifier-configure --dynamic=false --enabled true  
